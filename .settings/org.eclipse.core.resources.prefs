@@ -1,12 +1,17 @@
 eclipse.preferences.version=1
+encoding//auth/models.py=utf-8
 encoding//cloudedu/settings.py=UTF-8
 encoding//cloudedu/templates/base.html=UTF-8
 encoding//cloudedu/templates/menu.html=UTF-8
 encoding//cloudedu/urls.py=UTF-8
 encoding//cloudedu/views.py=utf-8
+encoding//crud/templates/crud/plain/list.html=UTF-8
 encoding//django_tables2/columns/base.py=utf-8
+encoding//essential/models.py=utf-8
 encoding//essential/tables.py=utf-8
 encoding//essential/urls.py=utf-8
+encoding//system/models.py=utf-8
+encoding//system/system_views.py=utf-8
 encoding//system/tables.py=utf-8
 encoding//system/templates/admin/index.html=UTF-8
 encoding//system/templates/admin/login.html=UTF-8

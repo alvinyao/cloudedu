@@ -3,13 +3,34 @@
 # alvin@2013-08-26 21:52:27
 # vim: set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4:
 
-from crud import views as crud_views
-from auth import User
+import django_tables2 as tables
+from crud.columns import CheckBoxColumn
 
-class ListView(crud_views.ListView):
-	model = User
-	queryset = DataDict.objects.all()
-	table_class = UserTable
-	table_pagination = {'per_page': 10}
+from models import *
+
+class UserProfileTable(tables.Table):
+	id = CheckBoxColumn(attrs = {'th': {'class':'center', 'style':'width:30px'}, 'td': {'class':'center'}, 'input':{'class': 'ace'}})
+
+	class Meta:
+		model = UserProfile
+		fields = ('id','sort_code','user.username', 'realname', 'user.is_active','user.date_joined' )
+		attrs = {
+			'id': 'user-table',
+			'class': 'table table-striped table-bordered table-hover dataTable'
+		}
+		
+class GroupProfileTable(tables.Table):
+	id = CheckBoxColumn(attrs = {'th': {'class':'center', 'style':'width:30px'}, 'td': {'class':'center'}, 'input':{'class': 'ace'}})
+
+	class Meta:
+		model = GroupProfile
+		fields = ('id','group.name','auth_model.name', 'is_active', 'desc')
+		attrs = {
+			'id': 'user-table',
+			'class': 'table table-striped table-bordered table-hover dataTable'
+		}
+		
+		
+
 
 

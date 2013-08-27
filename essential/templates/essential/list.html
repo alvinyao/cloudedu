@@ -1,0 +1,41 @@
+{% extends 'crud/base.html' %}
+
+{% load crudtags %}
+ 
+{% block CRUD_CONTENT %}
+	{%block action%}
+	<div class="row-fluid">
+		<div class="span6">
+			<p>
+				<a class="btn btn-small btn-danger">
+					<i class="icon-bolt"></i>删除
+				</a>&nbsp;
+
+				<a class="btn btn-small btn-primary" href="{% url datadict-add %}">
+					<i class="icon-edit"></i>添加
+				</a>
+			</p>
+		</div>
+		<div class="span6"></span>
+	</div>
+	{%endblock%}
+	{% block CRUD_LIST_ITEMS %}
+		{% load django_tables2 %}
+		{% render_table table %}
+	{% endblock %}
+{% endblock %}
+
+{% block pagescripts %}
+<script>
+jQuery(function(){
+	$('table th input:checkbox').on('click' , function(){
+		var that = this;
+		$(this).closest('table').find('tr > td:first-child input:checkbox')
+		.each(function(){
+			this.checked = that.checked;
+			$(this).closest('tr').toggleClass('selected');
+		});
+	});
+});
+</script>
+{% endblock %}
