@@ -1,51 +1,3 @@
-<<<<<<< HEAD
-{% extends 'crud/base.html' %}
-
-{% load crudtags %}
- 
-{% block CRUD_CONTENT %}
-	{%block action%}                                                               
-    <div class="row-fluid">                                                    
-        <div class="span6">                                                    
-            <p>                                                                
-                <button class="btn btn-small btn-danger">                      
-                    <i class="icon-bolt"></i>删除                              
-                </button>&nbsp;                                                    
-                                                                               
-                <button class="btn btn-small btn-primary" ref="{{object_list.model.get_create_url}}">                                                 
-                    <i class="icon-edit"></i>添加                              
-                </button>  
-                
-                <button class="btn btn-small btn-primary" ref="{{object_list.model.get_update_url}}">                                                 
-                    <i class=" icon-certificate"></i>编辑                              
-                </button>                                                        
-            </p>                                                                   
-        </div>                                                                     
-        <div class="span6"></div>     
-    </div>                                                                    
-    {%endblock%}
-	{% block CRUD_LIST_ITEMS %}
-		{% load django_tables2 %}
-		{% render_table table %}
-	{% endblock %}
-{% endblock %}
-
-{% block pagescripts %}
-<script>
-jQuery(function(){
-	$('table th input:checkbox').on('click' , function(){
-		var that = this;
-		$(this).closest('table').find('tr > td:first-child input:checkbox')
-		.each(function(){
-			this.checked = that.checked;
-			$(this).closest('tr').toggleClass('selected');
-		});
-	});
-});
-</script>
-{% endblock %}
-
-=======
 {% extends 'crud/base.html' %}
 
 {% load crudtags %}
@@ -87,4 +39,3 @@ jQuery(function(){
 });
 </script>
 {% endblock %}
->>>>>>> 095a866ed798bc6af73e18e369649ebd9e86c9f2
