@@ -26,4 +26,3 @@ class ListView(crud_views.ListView):
 
 	app = 'basic'
 	curr = 'datadict'
->>>>>>> 5d2884c8ebc5043fb53d4b828f757362f9d9eae7

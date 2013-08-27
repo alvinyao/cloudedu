@@ -111,14 +111,14 @@
 				</a>
 			</li>
 			
-			<li>
-				<a href="{% url group-list %}">
+			<li {% if curr == 'group' %}class="active"{%endif%}>
+				<a href="{% url group-list %}" >
 					<i class="icon-double-angle-right"></i>
 					角色管理
 				</a>
 			</li>
 			
-			<li {%if menu == "userlist"%}class="active"{%endif%}>
+			<li {%if curr == "user"%}class="active"{%endif%}>
 				<a href="{% url user-list %}">
 					<i class="icon-double-angle-right"></i>
 					用户管理
@@ -226,8 +226,4 @@
 		</ul>
 	</li>
 </ul><!--/.nav-list-->
-
-
-
-
 

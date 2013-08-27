@@ -74,4 +74,3 @@ class DeleteView( generic.DeleteView ):
 			context['curr'] = self.curr
 		return context
 
->>>>>>> 5d2884c8ebc5043fb53d4b828f757362f9d9eae7

@@ -12,10 +12,14 @@ class UserView(crud_views.ListView):
 	queryset = UserProfile.objects.all()
 	table_class = UserProfileTable
 	table_pagination = {'per_page': 10}
+	app = 'system'
+	curr = 'user'
 	
 class GroupView(crud_views.ListView):
 	model = GroupProfile
 	queryset = GroupProfile.objects.all()
 	table_class = GroupProfileTable
 	table_pagination = {'per_page': 10}
+	app = 'system'
+	curr = 'group'
     
