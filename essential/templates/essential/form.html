@@ -1,0 +1,63 @@
+{% extends 'crud/base.html' %}
+ 
+{% load crudtags %}
+
+{% block breadcrumb %}
+	{{ block.super }}
+	{% load breadcrumb_tags %}
+	{% add_crumb '基础设置' %}
+	{% add_crumb '数据字典' 'datadict-list' %}
+{% endblock %}
+
+{% block CRUD_CONTENT %}
+<div class="page-header position-relative">
+	<h1>
+		{% get_verbose_name form.instance %}
+		<small>
+			<i class="icon-double-angle-right"></i>
+			添加 {% get_verbose_name form.instance %}
+		</small>
+	</h1>
+</div><!--/.page-header-->
+
+<form 
+	action  = ''
+	method  = 'post' 
+	class   = 'form-horizontal' 
+	enctype = 'multipart/form-data' 
+>
+
+	{% csrf_token %}
+
+	{% block CRUD_FORM_FIELDS %}
+	<div class="control-group">
+		<label class="control-label" for="form-field-1">代码</label>
+
+		<div class="controls">
+			{{form.code}}
+		</div>
+	</div>
+	{% endblock %}
+	<div class="form-actions">
+		{% block CRUD_FORM_ACTIONS %}
+		<button class="btn btn-info" type="submit">
+			<i class="icon-ok bigger-110"></i>
+			保存
+		</button>
+
+		{% if form.instance.get_list_url %}
+			<a 
+				class = 'btn'
+				href  = '{{form.instance.get_list_url}}'
+			>
+				<i class="icon-undo bigger-110"></i>
+				Back
+			</a>
+		{% endif %}
+		{% endblock %}
+
+	</div>
+
+</form>
+
+{% endblock %}

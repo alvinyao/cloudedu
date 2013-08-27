@@ -1,0 +1,53 @@
+{% extends 'crud/base.html' %}
+ 
+{% load crudtags %}
+{% load bootstrap_toolkit %}
+
+{% block breadcrumb %}
+	{{ block.super }}
+{% endblock %}
+
+{% block CRUD_CONTENT %}
+<div class="page-header position-relative">
+	<h1>
+		{% get_verbose_name form.instance %}
+		<small>
+			<i class="icon-double-angle-right"></i>
+			添加 {% get_verbose_name form.instance %}
+		</small>
+	</h1>
+</div><!--/.page-header-->
+
+<form 
+	action  = ''
+	method  = 'post' 
+	class   = 'form-horizontal' 
+>
+
+	{% csrf_token %}
+
+	{% block CRUD_FORM_FIELDS %}
+	{{form|as_bootstrap:"horizontal"}}
+	{% endblock %}
+
+	<div class="form-actions">
+		{% block CRUD_FORM_ACTIONS %}
+		<button class="btn btn-info" type="submit">
+			<i class="icon-ok bigger-110"></i>
+			保存
+		</button>
+
+		{% if form.instance.get_list_url %}
+			<a 
+				class = 'btn'
+				href  = '{{form.instance.get_create_url}}'
+			>
+				<i class="icon-undo bigger-110"></i>
+				Back
+			</a>
+		{% endif %}
+		{% endblock %}
+	</div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'crud/base.html' %}
+ 
+{% load crudtags %}
+{% load bootstrap_toolkit %}
+
+{% block breadcrumb %}
+	{{ block.super }}
+{% endblock %}
+
+{% block CRUD_CONTENT %}
+<div class="page-header position-relative">
+	<h1>
+		{% get_verbose_name object %}
+		<small>
+			<i class="icon-double-angle-right"></i>
+			查看 {% get_verbose_name object %}
+		</small>
+	</h1>
+</div><!--/.page-header-->
+<div class="form-horizontal">
+	{% block CRUD_FORM_FIELDS %}
+		{% with object|model_to_dict as md %}
+		{% for name,value in md.items %}
+		<div class="control-group">
+			<label class="control-label" for="id_{{name}}_readonly">{{name}}</label>
+			<div class="controls">
+				<input readonly="" disabled="disabled" type="text" id="id_{{name}}_readonly" value="{{value}}">
+			</div>
+		</div>
+		{% endfor %}
+		{% endwith %}
+	{% endblock %}
+
+	<div class="form-actions">
+		{% block CRUD_FORM_ACTIONS %}
+		<a class="btn btn-info" href='{{object.get_update_url}}'>
+			<i class="icon-ok bigger-110"></i>
+			编辑
+		</a>
+
+		{% if object.get_list_url %}
+			<a 
+				class = 'btn'
+				href  = '{{object.get_list_url}}'
+			>
+				<i class="icon-undo bigger-110"></i>
+				Back
+			</a>
+		{% endif %}
+		{% endblock %}
+	</div>
+</div>
+{% endblock %}

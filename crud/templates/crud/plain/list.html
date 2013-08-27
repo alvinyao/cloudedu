@@ -1,0 +1,25 @@
+{% extends 'crud/base.html' %}
+
+{% load crudtags %}
+ 
+{% block CRUD_CONTENT %}
+	{% block CRUD_LIST_ITEMS %}
+		{% load django_tables2 %}
+		{% render_table table %}
+	{% endblock %}
+{% endblock %}
+
+{% block pagescripts %}
+<script>
+jQuery(function(){
+	$('table th input:checkbox').on('click' , function(){
+		var that = this;
+		$(this).closest('table').find('tr > td:first-child input:checkbox')
+		.each(function(){
+			this.checked = that.checked;
+			$(this).closest('tr').toggleClass('selected');
+		});
+	});
+});
+</script>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'crud/base.html' %}
+
+{% load crudtags %}
+ 
+{% block CRUD_CONTENT %}
+
+{% block CRUD_LIST_ITEMS %}
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<th class="center">
+			<label>
+				<input type="checkbox" class="ace" />
+				<span class="lbl"></span>
+			</label>
+		</th>
+		<th> {% get_verbose_name_plural object_list.model %} </th>
+		<th> 操作 </th>
+	</thead>
+
+	{% for object in object_list %}
+	<tbody>
+		<tr>
+			<td class="center">
+				<label>
+					<input type="checkbox" class="ace" />
+					<span class="lbl"></span>
+				</label>
+			</td>
+
+			<td> 
+				{% block CRUD_LIST_ITEMS_ITEM %}
+				{{object}} 
+				{% endblock %}
+			</td>
+			<td>
+				{% block CRUD_LIST_ITEMS_ACTIONS %}
+				<div class="hidden-phone visible-desktop action-buttons">
+					<a class="blue" href="#">
+						<i class="icon-zoom-in bigger-130"></i>
+					</a>
+
+					<a class="green" href="#">
+						<i class="icon-pencil bigger-130"></i>
+					</a>
+
+					<a class="red" href="#">
+						<i class="icon-trash bigger-130"></i>
+					</a>
+				</div>
+
+				<div class="hidden-desktop visible-phone">
+					<div class="inline position-relative">
+						<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-caret-down icon-only bigger-120"></i>
+						</button>
+
+						<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
+							<li>
+								<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+									<span class="blue">
+										<i class="icon-zoom-in bigger-120"></i>
+									</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+									<span class="green">
+										<i class="icon-edit bigger-120"></i>
+									</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+									<span class="red">
+										<i class="icon-trash bigger-120"></i>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{% endblock %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+
+</table>
+{% endblock %}
+
+<div class = 'row'>
+
+{% block crud_LIST_CREATE_LINK %}
+{% if object_list.model.get_create_url %}
+<div class = 'span4'>
+<a
+    class = 'btn btn-primary'
+    href  = '{{object_list.model.get_create_url }}'
+>
+    Create a {% get_verbose_name object_list.model %} 
+</a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block crud_LIST_PAGINATION %}
+<div class = 'span4'>
+{% if page_obj.has_previous %}
+    <a class = 'btn btn-info' href="?page={{ page_obj.previous_page_number}}"> Previous</a>
+{% endif %}
+{% if page_obj.has_next %}
+    <a class = 'btn btn-info' href="?page={{ page_obj.next_page_number}}"> Next</a>
+{% endif %}
+</div>
+{% endblock %}
+
+</div>
+
+{% endblock %}

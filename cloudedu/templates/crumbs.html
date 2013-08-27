@@ -1,0 +1,16 @@
+{% for crumb, href in crumbs %}
+	{% if not forloop.last %}
+		<li>
+		{% if href %}
+			<a href='{{ href }}' title='Go back to {{ crumb }}'>{{ crumb }}</a> 
+		{% else %}
+			<a href='javascript:void(0);' title=' {{ crumb }}'>{{ crumb }}</a> 
+		{% endif %}
+			<span class="divider">
+				<i class="icon-angle-right arrow-icon"></i>
+			</span>
+		</li>
+	{% else %}
+		<li class='active'>{{ crumb }}</span>
+	{% endif %}
+{% endfor %}

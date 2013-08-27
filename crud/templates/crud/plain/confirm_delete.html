@@ -1,0 +1,52 @@
+{% extends 'crud/base.html' %}
+{% load crudtags %}
+
+{% block breadcrumb %}
+	{{ block.super }}
+{% endblock %}
+
+ 
+{% block CRUD_CONTENT %}
+<div class="page-header position-relative">
+	<h1>
+		{% get_verbose_name object %}
+		<small>
+			<i class="icon-double-angle-right"></i>
+			删除 {% get_verbose_name object %}
+		</small>
+	</h1>
+</div><!--/.page-header-->
+
+<form
+    action=""
+    method="post"
+>
+    {% csrf_token %}
+
+    {% block CRUD_WARNING %}
+        {% block CRUD_WARNING_ALERT %}
+        <p 
+            class = 'alert alert-warning'
+        >
+            Are you you sure you want to delete "{{object}}"? 
+        </p>
+        {% endblock %}
+
+        {% block CRUD_WARNING_OPTS %}
+        <input 
+            class = 'btn btn-warning'
+            type  = 'submit' 
+            value = 'Yes' 
+        />
+
+        <a
+            class = 'btn'
+            href  = '{{object.get_absolute_url}}'
+        >
+            No
+        </a>
+        {% endblock %}
+    {% endblock %}
+
+</form>
+{% endblock %}
