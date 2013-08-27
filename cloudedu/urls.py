@@ -8,3 +8,4 @@ urlpatterns = patterns('',
     url(r'^essential/', include('essential.urls')),
     url(r'^system/', include(site.urls)),
 )
+
