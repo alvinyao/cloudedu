@@ -14,13 +14,13 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'edu.db',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'sqlserver_ado', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'cloudedu',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'USER': 'sa',
+        'PASSWORD': '10000007',
+        'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '1433',                      # Set to empty string for default.
     }
 }
 
@@ -118,7 +118,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
+    'auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
@@ -129,6 +129,7 @@ INSTALLED_APPS = (
 	'crud',
     'cloudedu',
     'essential',
+    'system',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -167,5 +168,5 @@ LOGGING = {
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
  
 TEMPLATE_CONTEXT_PROCESSORS += (
-	'django.core.context_processors.request',
+	'django.core.context_processors.request','auth.context_processors.auth'
 )
