@@ -124,6 +124,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap_toolkit',
+	'django_tables2',
+	'crud',
     'cloudedu',
     'essential',
     # Uncomment the next line to enable the admin:
@@ -160,3 +163,9 @@ LOGGING = {
         },
     }
 }
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+ 
+TEMPLATE_CONTEXT_PROCESSORS += (
+	'django.core.context_processors.request',
+)

@@ -368,27 +368,13 @@
 					<script type="text/javascript">
 						try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
 					</script>
-
 					<ul class="breadcrumb">
-						<li>
-							<i class="icon-home home-icon"></i>
-							<a href="{% url index %}">首页</a>
-
-							<span class="divider">
-								<i class="icon-angle-right arrow-icon"></i>
-							</span>
-						</li>
-
-						<li>
-							<a href="#">Other Pages</a>
-
-							<span class="divider">
-								<i class="icon-angle-right arrow-icon"></i>
-							</span>
-						</li>
-						<li class="active">Grid</li>
-					</ul><!--.breadcrumb-->
-
+					{% block breadcrumb %}
+						{% load breadcrumb_tags %}
+						{% add_crumb '首页' 'index' %}
+					{% endblock %}
+					{% render_breadcrumbs %}
+					</ul>
 					<div class="nav-search" id="nav-search">
 						<form class="form-search">
 							<span class="input-icon">

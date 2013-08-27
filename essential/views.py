@@ -1,25 +1,18 @@
-# Create your views here.
-
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.core.urlresolvers import reverse_lazy
-from django.template.response import TemplateResponse
-
+from crud import views as crud_views
 from models import DataDict
+from tables import DataDictTable
 
-class DataDictList(ListView):
+class CreateView(crud_views.CreateView):
 	model = DataDict
-	queryset = DataDict.objects.order_by('order')
-	context_object_name = 'data_dict_list'
 
-class DataDictCreate(CreateView):
-    model = DataDict
-    fields = ['name']
+class DetailView(crud_views.DetailView):
+	model = DataDict
 
-class DataDictUpdate(UpdateView):
-    model = DataDict
-    fields = ['name']
+class DeleteView(crud_views.DeleteView):
+	model = DataDict
 
-class DataDictDelete(DeleteView):
-    model = DataDict
-    success_url = reverse_lazy('author-list')
+class ListView(crud_views.ListView):
+	model = DataDict
+	queryset = DataDict.objects.all()
+	table_class = DataDictTable
+	table_pagination = {'per_page': 10}
