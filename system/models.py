@@ -1,6 +1,11 @@
+#!/usr/bin/env python
+# coding: utf-8
+# alvin@2013-08-26 21:52:27
+# vim: set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4:
+
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
-from auth.models import User
+from auth.models import User, AuthModel, Group
 from system.util import quote
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import smart_unicode
@@ -66,3 +71,18 @@ class LogEntry(models.Model):
         if self.content_type and self.object_id:
             return mark_safe(u"%s/%s/%s/" % (self.content_type.app_label, self.content_type.model, quote(self.object_id)))
         return None
+    
+class UserProfile(models.Model):
+    user = models.ForeignKey(User)
+    sort_code = models.CharField(verbose_name = u'排序编号', max_length=255)
+    realname = models.CharField(verbose_name = u'真实姓名', max_length=255)
+    #staff = models.CharField(verbose_name = u'关联职工', max_length=255)
+    
+    
+class GroupProfile(models.Model):
+    auth_model = models.ForeignKey(AuthModel)
+    group = models.ForeignKey(Group)
+    is_active = models.BooleanField(verbose_name = u'是否激活', default=True)
+    desc = models.CharField(verbose_name = u'描述', max_length=511)
+    
+

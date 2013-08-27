@@ -248,7 +248,7 @@
 								</li>
 
 								<li>
-									<a href="{% url admin:password_change %}">
+									<a href="">
 										<i class="icon-user"></i>
 										修改密码
 									</a>
@@ -257,7 +257,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="{% url admin:logout %}">
+									<a href="">
 										<i class="icon-off"></i>
 										退出
 									</a>
@@ -309,7 +309,7 @@
 					</div>
 				</div><!--#sidebar-shortcuts-->
 
-				{% include "menu.html" with app='nav-base-setting' menu='datadict' %}
+				{% include "menu.html" with app='system' menu='userlist' %}
 				<div class="sidebar-collapse" id="sidebar-collapse">
 					<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
 				</div>
@@ -457,4 +457,5 @@
 	</body>
 </html>
 {% endblock %}
+
 
