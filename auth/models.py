@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-# alvin@2013-08-26 21:52:27
-# vim: set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4:
-
 import urllib
 
 from django.core.exceptions import ImproperlyConfigured
@@ -115,7 +110,7 @@ class Group(models.Model):
     members-only portion of your site, or sending them members-only email
     messages.
     """
-    name = models.CharField(verbose_name = u'角色名称', max_length=80, unique=True)
+    name = models.CharField(_('name'), max_length=80, unique=True)
     permissions = models.ManyToManyField(Permission,
         verbose_name=_('permissions'), blank=True)
 
@@ -234,7 +229,7 @@ class User(models.Model):
 
     Username and password are required. Other fields are optional.
     """
-    username = models.CharField(verbose_name = u'登录名', max_length=30, unique=True,
+    username = models.CharField(_('username'), max_length=30, unique=True,
         help_text=_('Required. 30 characters or fewer. Letters, numbers and '
                     '@/./+/-/_ characters'))
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
@@ -244,14 +239,14 @@ class User(models.Model):
     is_staff = models.BooleanField(_('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin '
                     'site.'))
-    is_active = models.BooleanField(verbose_name = u'状态', default=True,
+    is_active = models.BooleanField(_('active'), default=True,
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
     is_superuser = models.BooleanField(_('superuser status'), default=False,
         help_text=_('Designates that this user has all permissions without '
                     'explicitly assigning them.'))
     last_login = models.DateTimeField(_('last login'), default=timezone.now)
-    date_joined = models.DateTimeField(verbose_name = u'创建时间', default=timezone.now)
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     groups = models.ManyToManyField(Group, verbose_name=_('groups'),
         blank=True, help_text=_('The groups this user belongs to. A user will '
                                 'get all permissions granted to each of '
@@ -479,11 +474,3 @@ class AnonymousUser(object):
 
     def is_authenticated(self):
         return False
-    
-class AuthModel(models.Model):
-    code = models.CharField(verbose_name = u'编码', max_length=30)
-    name = models.CharField(verbose_name = u'授权模型', max_length=255)
-    desc = models.CharField(verbose_name = u'描述', max_length=511)
-    
-    
-    

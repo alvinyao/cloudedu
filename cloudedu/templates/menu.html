@@ -15,7 +15,7 @@
 		</a>
 
 		<ul class="submenu">
-			<li {%if menu == "base-setting"%}class="active"{%endif%}>
+			<li {%if menu == "datadict"%}class="active"{%endif%}>
 				<a href="{% url datadict-list %}">
 					<i class="icon-double-angle-right"></i>
 					数据字典
@@ -88,7 +88,7 @@
 		</ul>
 	</li>
 
-	<li  {% if app == 'system'%}class="active open"{%endif%}>
+	<li>
 		<a href="#" class="dropdown-toggle">
 			<i class="icon-list"></i>
 			<span class="menu-text"> 系统管理 </span>
@@ -112,14 +112,14 @@
 			</li>
 			
 			<li>
-				<a href="{% url group-list %}">
+				<a href="jqgrid.html">
 					<i class="icon-double-angle-right"></i>
 					角色管理
 				</a>
 			</li>
 			
-			<li {%if menu == "userlist"%}class="active"{%endif%}>
-				<a href="{% url user-list %}">
+			<li>
+				<a href="jqgrid.html">
 					<i class="icon-double-angle-right"></i>
 					用户管理
 				</a>
@@ -226,7 +226,6 @@
 		</ul>
 	</li>
 </ul><!--/.nav-list-->
-
 
 
 

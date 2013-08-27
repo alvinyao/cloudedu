@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, include, url
-from system import system_views
+from system import site
+import system
+system.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', system_views.UserView.as_view(), name='user-list'),
-    url(r'^group$', system_views.GroupView.as_view(), name='group-list'),
+    url(r'^user/$', views.ListView.as_view(), name='user-list'),
 )
-
