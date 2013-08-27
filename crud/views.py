@@ -11,7 +11,7 @@ class CreateView( generic.CreateView ):
 	curr = 'datadict'
 
 	def get_context_data(self, **kwargs):
-		context = super(CreateView, self).get_context_data()
+		context = super(CreateView, self).get_context_data(**kwargs)
 		if hasattr(self, 'app'):
 			context['app'] = self.app
 		if hasattr(self, 'curr'):
