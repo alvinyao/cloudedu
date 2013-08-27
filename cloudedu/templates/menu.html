@@ -5,8 +5,7 @@
 			<span class="menu-text"> 首页</span>
 		</a>
 	</li>
-
-	<li {% if app == 'nav-base-setting'%}class="active open"{%endif%}>
+	<li {% if app == 'basic'%}class="active open"{%endif%}>
 		<a href="#" class="dropdown-toggle">
 			<i class="icon-desktop"></i>
 			<span class="menu-text"> 基础设置 </span>
@@ -15,7 +14,8 @@
 		</a>
 
 		<ul class="submenu">
-			<li {%if menu == "base-setting"%}class="active"{%endif%}>
+
+			<li {%if curr == "datadict"%}class="active"{%endif%}>
 				<a href="{% url datadict-list %}">
 					<i class="icon-double-angle-right"></i>
 					数据字典
