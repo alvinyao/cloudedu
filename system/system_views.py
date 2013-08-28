@@ -22,4 +22,5 @@ class GroupView(crud_views.ListView):
 	table_pagination = {'per_page': 10}
 	app = 'system'
 	curr = 'group'
+	
     
